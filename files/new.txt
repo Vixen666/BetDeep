@@ -1,0 +1,12 @@
+2
+50
+images/new1.jpg
+images/new2.jpg
+images/new3.jpg
+images/new4.jpg
+images/new5.jpg
+images/new6.jpg
+images/new7.jpg
+images/new8.jpg
+images/new9.jpg
+images/new10.jpg
