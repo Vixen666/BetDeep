@@ -1,5 +1,7 @@
 package p1;
 
+import java.io.IOException;
+
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
@@ -19,12 +21,12 @@ public class MainDS2 {
         return res;
     }
     
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		Buffer<IconProducer> producerBuffer	= new Buffer<IconProducer>();
 		Buffer<Icon> iconBuffer	= new Buffer<Icon>();
 				
 		IconProducerManager ipManager = new IconProducerManager(producerBuffer);		
-        ipManager.addIconProducer(new ArrayProducer(getIconArray(),1000,2));
+		ipManager.addIconProducer(new FileProducer("files/new.txt"));
 		
 		Producer producer = new Producer(producerBuffer,iconBuffer);
 		producer.start();

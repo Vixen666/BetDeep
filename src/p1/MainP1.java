@@ -1,10 +1,12 @@
 package p1;
 
+import java.io.IOException;
+
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 public class MainP1 {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		Buffer<Icon> iconBuffer = new Buffer<Icon>();
 		Buffer<IconProducer> producerBuffer	= new Buffer<IconProducer>();
 		
@@ -17,9 +19,9 @@ public class MainP1 {
 		producer.start();
 		
 		IconProducerManager ipManager = new IconProducerManager(producerBuffer);		
-		ipManager.addIconProducer(new ArrayProducer(getIconArray(),50,10));
-		ipManager.addIconProducer(new ShowGubbe(3000));
-		ipManager.addIconProducer(new FileProducer("files/new.txt"));
+		//ipManager.addIconProducer(new ArrayProducer(getIconArray(),50,10));
+		//ipManager.addIconProducer(new ShowGubbe(3000));
+		ipManager.addIconProducer(new FileProducer("files/bear.txt"));
 	}
 	
 	private static Icon[] getIconArray() {
