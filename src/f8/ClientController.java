@@ -77,16 +77,16 @@ public class ClientController {
 
 	public static void main(String[] args) {
 		try {
-			Client clientA = new ClientA("127.0.0.1",3440);
-			new ClientController(clientA);
+//			Client clientA = new ClientA("127.0.0.1",3440);
+//			new ClientController(clientA);
 //			Client clientB = new ClientB("127.0.0.1",3441);
 //			new ClientController(clientB);
 //			Client clientC = new ClientC("127.0.0.1",3442);
 //			new ClientController(clientC);
 //			Client clientD = new ClientD("127.0.0.1",3443);
 //			new ClientController(clientD);
-//			Client clientA = new ClientA("195.178.227.53",3440);
-//			new ClientController(clientA);
+			Client clientA = new ClientA("195.178.227.53",3440);
+			new ClientController(clientA);
 //			Client clientB = new ClientB("195.178.227.53",3441);
 //			new ClientController(clientB);
 //			Client clientC = new ClientC("195.178.227.53",3442);

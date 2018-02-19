@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -18,8 +19,8 @@ import javax.swing.SwingUtilities;
 
 public class QuizUI extends JPanel {
 	private QuizController controller;
-	private JTextField tfIp = new JTextField();
-	private JTextField tfPort = new JTextField();
+	private JTextField tfIp = new JTextField("195.178.227.53");
+	private JTextField tfPort = new JTextField("7721");
 	private JTextField tfQuestionIndex = new JTextField();
 	private JTextField tfAnswer = new JTextField();
 	private JTextArea textarea = new JTextArea();
@@ -91,6 +92,10 @@ public class QuizUI extends JPanel {
 		});
 	}
 	
+	public void setTextTest(final String txt){
+		setText(txt);
+	}
+	
 	public void appendText(final String txt) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -108,7 +113,7 @@ public class QuizUI extends JPanel {
 		});
 	}
 	
-	public void connected() {
+	public void connected(final String txt) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 		        btnConnection.setText("Koppla ner");
@@ -119,6 +124,7 @@ public class QuizUI extends JPanel {
 		        tfAnswer.setText("");
 		        tfIp.setEnabled(false);
 		        tfPort.setEnabled(false);
+		        setText(txt);
 			}
 		});
 	}
@@ -169,7 +175,12 @@ public class QuizUI extends JPanel {
 	private class ConnectListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if(btnConnection.getText().equals("Anslut")) {
-				controller.connect(tfIp.getText(),tfPort.getText());
+				try {
+					controller.connect();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			} else {
 				controller.disconnect();
 			}
@@ -178,14 +189,31 @@ public class QuizUI extends JPanel {
     
     private class Question implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            controller.question(tfQuestionIndex.getText());
+            try {
+				controller.question();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
         }
     }
     
     private class Answer implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-			controller.answer(tfQuestionIndex.getText(),tfAnswer.getText());
+			controller.answer();
         }
+    }
+    
+    public String getIp(){
+    	return tfIp.getText();
+    }
+    
+    public int getPort(){
+    	return Integer.parseInt(tfPort.getText());
+    }
+    
+    public int getQuestionIndex(){
+    	return Integer.parseInt(tfQuestionIndex.getText());
     }
     
 }
