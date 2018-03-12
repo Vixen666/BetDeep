@@ -17,6 +17,17 @@ public class ViewerWindow {
 		frame.setVisible(true);
 	}
 	
+	public ViewerWindow(P2Viewer viewer, int x, int y) {
+		JFrame frame = new JFrame("Viewer");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLayout(new FlowLayout(FlowLayout.CENTER));
+		frame.add(viewer);
+		frame.pack();
+		frame.setLocation(x,y);
+		frame.setVisible(true);
+		
+	}
+	
 	// example ViewerWindow, Viewer
 //	public static void main(String[] args) {
 //		SwingUtilities.invokeLater(new Runnable(){

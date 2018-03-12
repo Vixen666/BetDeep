@@ -11,12 +11,25 @@ import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
+/**
+ * Reads a file from harddrive and produces a array of icons
+ * @author johannes.roos
+ *
+ */
 public class FileProducer implements IconProducer {
 	private ArrayList<Icon> icons;
 	private int delay = 0;
 	private int times = 0;
 	private int currentIndex = -1;
 	
+	/**
+	 * Reads a file in a specific way.
+	 * First row nbrOfTimes
+	 * Second row delay
+	 * The rest filenames for img-files for gif
+	 * @param filename File to be read
+	 * @throws IOException
+	 */
 	public FileProducer(String filename) throws IOException {
 		this.icons = new ArrayList<Icon>();
 		try(BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filename), "UTF-8"))){
@@ -32,20 +45,32 @@ public class FileProducer implements IconProducer {
 		}
 	}
 	
+	/**
+	 * return the delay
+	 */
 	public int delay() {
 		return delay;
 	}
 
+	/**
+	 * returns nbroftimes
+	 */
 	@Override
 	public int times() {
 		return times;
 	}
 
+	/**
+	 * returns size
+	 */
 	@Override
 	public int size() {
 		return icons.size();
 	}
 
+	/**
+	 * returns nexticon, starts over if reached the end
+	 */
 	@Override
 	public Icon nextIcon() {
 		if(icons==null || icons.size()==0)

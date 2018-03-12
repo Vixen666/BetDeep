@@ -19,9 +19,11 @@ public class MainP1 {
 		producer.start();
 		
 		IconProducerManager ipManager = new IconProducerManager(producerBuffer);		
-		//ipManager.addIconProducer(new ArrayProducer(getIconArray(),50,10));
-		//ipManager.addIconProducer(new ShowGubbe(3000));
+		ipManager.addIconProducer(new ArrayProducer(getIconArray(),50,10));
+		ipManager.addIconProducer(new ShowGubbe(3000));
 		ipManager.addIconProducer(new FileProducer("files/bear.txt"));
+		ipManager.addIconProducer(new FileProducer("files/new.txt"));
+		
 	}
 	
 	private static Icon[] getIconArray() {
